@@ -2,13 +2,13 @@
 set -u
 
 GIT_REPO="dalijolijo"
-GIT_PROJECT="bitcore-node-manager"
+GIT_PROJECT="bitcloud-node-manager"
 DOCKER_REPO="dalijolijo"
-IMAGE_NAME="bitcore-node-manager"
+IMAGE_NAME="bitcloud-node-manager"
 IMAGE_TAG="btdx" 
 CONFIG_PATH="/root/.bitcloud"
 CONFIG=${CONFIG_PATH}/bitcloud.conf
-CONTAINER_NAME="bitcore-node-manager"
+CONTAINER_NAME="bitcloud-node-manager"
 RPC_PORT="8330"
 BNM_PORT="80"
 
@@ -21,12 +21,20 @@ NO_COL='\033[0m'
 BTDX_COL='\033[0;36m'
 
 #
-# Check if bitcore.conf already exist.
+# Check if bitcloud.conf already exist.
 #
 clear
 printf "\nDOCKER SETUP FOR ${BTDX_COL}BITCLOUD NODE MANAGER (BTDX v.${IMAGE_TAG})${NO_COL}\n"
 printf "\nSetup Config file"
 printf "\n-----------------\n"
+
+#
+#
+#
+printf "\nPlease define the Bitcloud config folder in which the bitcloud.conf is located. For example /root/.bitcloud/\n"
+printf "Enter the directory and Hit [ENTER]: "
+read CONFIGPATH
+CONFIG_PATH=$(echo "${CONFIGPATH}" | xargs)
 
 #
 # Docker Installation
@@ -35,18 +43,19 @@ if ! type "docker" > /dev/null; then
     curl -fsSL https://get.docker.com | sh
 fi
 
-
 #
 # Firewall Setup
 #
 printf "\nDownload needed Helper-Scripts"
 printf "\n------------------------------\n"
-wget https://raw.githubusercontent.com/${GIT_REPO}/${GIT_PROJECT}/master/docker/check_os.sh -O check_os.sh
+wget https://github.com/${GIT_REPO}/bitcore-node-manager/raw/master/docker/check_os.sh -O check_os.sh
 chmod +x ./check_os.sh
 source ./check_os.sh
+rm ./check_os.sh
 wget https://raw.githubusercontent.com/${GIT_REPO}/${GIT_PROJECT}/master/docker/firewall_config.sh -O firewall_config.sh
 chmod +x ./firewall_config.sh
-source ./firewall_config.sh ${RPC_PORT} ${BNM_PORT} 
+source ./firewall_config.sh ${BNM_PORT} 
+rm ./firewall_config.sh
 
 #
 # Pull docker images and run the docker container
@@ -77,8 +86,8 @@ docker run --rm \
  -p ${BNM_PORT}:${BNM_PORT} \
  --name ${CONTAINER_NAME} \
  -e CONFIG_PATH=${CONFIG_PATH} \
+ -v ${CONFIG_PATH}:${CONFIG_PATH} \
  -d ${DOCKER_REPO}/${IMAGE_NAME}:${IMAGE_TAG}
-
 
 #
 # Show result and give user instructions

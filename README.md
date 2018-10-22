@@ -2,7 +2,7 @@
 
 Bitcloud Node Manager is a lightweight dashboard and control system for your Bitcloud RPC Server Node.
 
-![Bitcloud Node Manager](bitcore-node-manager.png?raw=true "Bitcloud Node Manager")
+![Bitcloud Node Manager](bitcloud-node-manager.png?raw=true "Bitcloud Node Manager")
 
 ## Features
 
@@ -23,7 +23,7 @@ Bitcloud Node Manager is a lightweight dashboard and control system for your Bit
 * Overview of the memory pool and containing transactions
 
 ## Docker Solution
-You will find Bitcloud Node Manager as docker solution [here](https://github.com/dalijolijo/bitcore-node-manager/blob/master/docker/README.md).
+You will find Bitcloud Node Manager as docker solution [here](https://github.com/dalijolijo/bitcloud-node-manager/blob/master/docker/README.md).
 
 ## Requirements
 
@@ -34,7 +34,7 @@ You will find Bitcloud Node Manager as docker solution [here](https://github.com
 
 ## Installation
 
-1. Install Bitcloud Node Manager by cloning this repository or run [Bitcloud Node Manager as Docker Solution](https://github.com/dalijolijo/bitcore-node-manager/blob/master/docker/README.md).
+1. Install Bitcloud Node Manager by cloning this repository or run [Bitcloud Node Manager as Docker Solution](https://github.com/dalijolijo/bitcloud-node-manager/blob/master/docker/README.md).
 2. Edit `src/Config.php` to enter your bitcoind RPC creditials, set a password and change other settings.
 3. Upload the folder to the public directory of your web server. If the folder is accesible via the internet, I recommed renaming the folder to something unique. Although Bitcloud Node Manager is password protected and access can be limited to a specific IP, there can be security flaws and bugs.
 4. Open the URL to the folder in your browser and login with the password choosen in `src/Config.php`.

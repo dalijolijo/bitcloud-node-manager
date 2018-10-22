@@ -4,7 +4,7 @@
 # Use an official Ubuntu runtime as a parent image
 FROM ubuntu:16.04
 
-LABEL maintainer="Jon D. (dArkjON), David B. (dalijolijo)"
+LABEL maintainer="David B. (dalijolijo)"
 
 # Make ports available to the world outside this container
 # RPCPort = 8330
@@ -17,12 +17,11 @@ SHELL ["/bin/bash", "-c"]
 RUN echo '*** Bitcloud Node Manager Docker Solution ***'
 
 #
-# Installing required packages for bitcore-node-manager
+# Installing required packages for bitcloud-node-manager
 #
-RUN echo '*** Running updates and installing required packages for bitcore-node-manager***' && \
+RUN echo '*** Running updates and installing required packages for bitcloud-node-manager***' && \
     apt-get update -y && \
     apt-get install -y 	apache2 \
-			apt-utils \
 			curl \
                         git \
 			libapache2-mod-php \
@@ -34,9 +33,9 @@ RUN echo '*** Running updates and installing required packages for bitcore-node-
                         wget
 
 #
-# Install bitcore-node-manager
+# Install bitcloud-node-manager
 #
-RUN git clone -b BTDX https://github.com/dalijolijo/bitcore-node-manager.git /var/www/html/btdx
+RUN git clone https://github.com/dalijolijo/bitcloud-node-manager.git /var/www/html/btdx
 
 #
 # Copy Supervisor Configuration
