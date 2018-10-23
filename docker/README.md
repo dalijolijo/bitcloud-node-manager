@@ -33,9 +33,9 @@ sudo bash -c "$(curl -fsSL https://github.com/dalijolijo/bitcloud-node-manager/r
 ```
 
 ## Bitcloud Node Manager 
-The integrated Bitcloud RPC Server will download the blockchain bootstrap and will synced to the current block height.
+The integrated Bitcloud Masternode Server will download the blockchain bootstrap and will synced to the current block height.
 
-Now view your Bitcloud Node Manager: http://localhost
+Now view your Bitcloud Node Manager with: http://localhost
 
 **Hint:** If the Bitcloud Node Manager docker container is running on a server you must establish a tunnel for port 80 to use localhost.
 
