@@ -11,6 +11,7 @@ CONFIG=${CONFIG_PATH}/bitcloud.conf
 CONTAINER_NAME="bitcloud-node-manager"
 RPC_PORT="8330"
 BNM_PORT="80"
+IP=$(curl -s https://bit-cloud.info/showip.php)
 
 #
 # Color definitions
@@ -29,12 +30,23 @@ printf "\nSetup Config file"
 printf "\n-----------------\n"
 
 #
-#
+# User input: Bitcloud config folder
 #
 printf "\nPlease define the Bitcloud config folder in which the bitcloud.conf is located. For example /home/bitcloud/.bitcloud\n"
 printf "Enter the directory and Hit [ENTER]: "
 read CONFIGPATH
 CONFIG_PATH=$(echo "${CONFIGPATH}" | xargs)
+
+#
+# User input: Bitcloud config folder
+#
+read -e -p "Is this IP-address $IP your ${BTDX_COL}Bitcloud${NO_COL} IP-address? [Y/n]: " ipaddress
+if [[ ("$ipaddress" == "n" || "$ipaddress" == "N") ]]; then
+	printf "\nEnter the IP-address of your ${BTDX_COL}BitCloud${NO_COL} Masternode VPS and Hit [ENTER]: "
+	read RPCIP
+else
+	RPCIP=$(echo $IP)
+fi
 
 #
 # Docker Installation
@@ -85,6 +97,8 @@ docker run --rm \
  -p ${BNM_PORT}:${BNM_PORT} \
  --name ${CONTAINER_NAME} \
  -e CONFIG_PATH=${CONFIG_PATH} \
+ -e RPC_PORT=${RPC_PORT} \
+ -e RPCIP=${RPCIP} \
  -v ${CONFIG_PATH}:${CONFIG_PATH} \
  -d ${DOCKER_REPO}/${IMAGE_NAME}:${IMAGE_TAG}
 
