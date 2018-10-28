@@ -6,7 +6,7 @@ GIT_PROJECT="bitcloud-node-manager"
 DOCKER_REPO="dalijolijo"
 IMAGE_NAME="bitcloud-node-manager"
 IMAGE_TAG="btdx" 
-CONFIG_PATH="/root/.bitcloud"
+CONFIG_PATH="/home/bitcloud/.bitcloud"
 CONFIG=${CONFIG_PATH}/bitcloud.conf
 CONTAINER_NAME="bitcloud-node-manager"
 RPC_PORT="8330"
@@ -31,7 +31,7 @@ printf "\n-----------------\n"
 #
 #
 #
-printf "\nPlease define the Bitcloud config folder in which the bitcloud.conf is located. For example /root/.bitcloud/\n"
+printf "\nPlease define the Bitcloud config folder in which the bitcloud.conf is located. For example /home/bitcloud/.bitcloud\n"
 printf "Enter the directory and Hit [ENTER]: "
 read CONFIGPATH
 CONFIG_PATH=$(echo "${CONFIGPATH}" | xargs)
