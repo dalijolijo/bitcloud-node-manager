@@ -14,7 +14,7 @@ class Config {
 	const ACCESS_IP = "172.17.0.1";	
 	
 	// IP of bitcloudd RPC server. Usually localhost. Be careful with remote servers. The connection is not encrypted.
-	const RPC_IP = "RPCIP:8330";
+	const RPC_IP = "172.17.0.1:8330";
 	// RPC username / rpcauth specified in bitcloud.conf
 	const RPC_USER = "RPCUSER";
 	// RPC password / rpcauth specified in bitcloud.conf
