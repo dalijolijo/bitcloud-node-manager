@@ -40,7 +40,7 @@ CONFIG_PATH=$(echo "${CONFIGPATH}" | xargs)
 #
 # User input: Bitcloud config folder
 #
-read -e -p "Is this IP-address $IP your ${BTDX_COL}Bitcloud${NO_COL} IP-address? [Y/n]: " ipaddress
+read -e -p "Is this IP-address $IP your ${BTDX_COL}Bitcloud Masternode${NO_COL} IP-address? [Y/n]: " ipaddress
 if [[ ("$ipaddress" == "n" || "$ipaddress" == "N") ]]; then
 	printf "\nEnter the IP-address of your ${BTDX_COL}BitCloud${NO_COL} Masternode VPS and Hit [ENTER]: "
 	read RPCIP
