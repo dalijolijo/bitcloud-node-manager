@@ -92,6 +92,8 @@ if [ $? -eq 0 ];then
     fi
 fi
 
+echo "IP : ${RPCIP}"
+
 docker rm ${CONTAINER_NAME} >/dev/null
 docker pull ${DOCKER_REPO}/${IMAGE_NAME}:${IMAGE_TAG}
 docker run --rm \
