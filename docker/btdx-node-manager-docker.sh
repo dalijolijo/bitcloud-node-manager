@@ -82,7 +82,6 @@ fi
 docker rm ${CONTAINER_NAME} >/dev/null
 docker pull ${DOCKER_REPO}/${IMAGE_NAME}:${IMAGE_TAG}
 docker run --rm \
- -p ${RPC_PORT}:${RPC_PORT} \
  -p ${BNM_PORT}:${BNM_PORT} \
  --name ${CONTAINER_NAME} \
  -e CONFIG_PATH=${CONFIG_PATH} \
