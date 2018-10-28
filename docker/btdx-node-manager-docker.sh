@@ -24,7 +24,7 @@ BTDX_COL='\033[0;36m'
 # Check if bitcloud.conf already exist.
 #
 clear
-printf "\nDOCKER SETUP FOR ${BTDX_COL}BITCLOUD NODE MANAGER${NO_COL}\n"
+printf "\n${BTDX_COL}DOCKER SETUP FOR BITCLOUD NODE MANAGER${NO_COL}\n"
 printf "\nSetup Config file"
 printf "\n-----------------\n"
 
