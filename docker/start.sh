@@ -4,9 +4,9 @@ set -u
 #
 # Set user/password for Node Manager 
 #
-RPCUSER=$(grep rpcuser ${CONFIG_PATH}/bitcloud.conf | cut -f2 -d "=")
+RPCUSER=$(grep rpcuser ${CONFIG_PATH}/bitcloud.conf | cut -f2- -d "=")
 sed -i "s#RPCUSER#${RPCUSER}#g" /var/www/html/btdx/src/Config.php
-RPCPASSWORD=$(grep rpcpassword ${CONFIG_PATH}/bitcloud.conf | cut -f2 -d "=")
+RPCPASSWORD=$(grep rpcpassword ${CONFIG_PATH}/bitcloud.conf | cut -f2- -d "=")
 sed -i "s#RPCPASSWORD#${RPCPASSWORD}#g" /var/www/html/btdx/src/Config.php
 RPCIP=$(ip addr | grep 'global eth0' | xargs | cut -f2 -d ' ' | cut -f 1 -d '/')
 sed -i "s#RPCIP#${RPCIP}#g" /var/www/html/btdx/src/Config.php
